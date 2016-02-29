@@ -1,0 +1,12 @@
+# Front-end dep
+_build/node_modules
+_build/bower_components
+_build/.sass-cache
+
+# Python
+venv
+*.pyc
+
+# Mac OS
+*~
+*#

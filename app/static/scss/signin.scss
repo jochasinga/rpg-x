@@ -1,0 +1,84 @@
+@import 'main';
+
+/*
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
+}
+*/
+
+// Auth0 Lock customization
+body {
+    overflow: hidden;
+    #a0-onestep {
+        min-width: 300px;
+        .a0-header {
+            .a0-icon-container {
+                height: 35px !important;
+            }
+
+            .a0-image img {
+                display: none;
+            }
+        }
+    }
+    /*
+    button.a0-primary {
+        background: $summer-blue !important;
+    }
+    */
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  background: none;
+  border-radius: 3px;
+
+  a.btn {
+      background: transparent;
+      border-color: $summer-blue;
+      color: $summer-blue;
+  }
+}
+
+.form-signin .checkbox label {
+  color: $medium-black;
+}
+
+.form-signin-heading {
+  color: $medium-black;
+  font-family: $main-font;
+  font-weight: $light;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

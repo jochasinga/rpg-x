@@ -1,0 +1,13 @@
+tornado
+flask
+flask-login
+sqlalchemy
+flask-sqlalchemy
+flask-wtf
+flask-cache
+flask-admin
+flask-security
+requests
+redis
+pytest
+mock

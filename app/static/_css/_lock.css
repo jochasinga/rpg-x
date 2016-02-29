@@ -1,0 +1,27 @@
+/******* Global variables ********/
+/***** colors *****/
+/*$medium-black: #181b20;*/
+/*$summer-blue: #28a7e9;*/
+@font-face {
+  font-family: Montserrat;
+  font-weight: light;
+  src: url("../fonts/Montserrat-Light.otf") format("opentype"); }
+@font-face {
+  font-family: Montserrat;
+  font-weight: regular;
+  src: url("../fonts/Montserrat-Regular.otf") format("opentype"); }
+@font-face {
+  font-family: Montserrat;
+  font-weight: bold;
+  src: url("../fonts/Montserrat-Bold.otf") format("opentype"); }
+@font-face {
+  font-family: Montserrat;
+  font-weight: bolder;
+  src: url("../fonts/Montserrat-Black.otf") format("opentype"); }
+/***** fonts *****/
+/**** font-weight *****/
+/*** font-size ***/
+#a0-lock .a0-icon-container {
+  height: 35px; }
+
+/*# sourceMappingURL=_lock.css.map */

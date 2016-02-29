@@ -1,0 +1,19 @@
+{
+  "name": "rpg-x",
+  "version": "0.1.0",
+  "description": "RPG-X Game",
+  "author": "jo.chasinga@gmail.com",
+  "repository": {
+          "type": "git",
+          "url": "https://github.com/jochasinga/rpg-x"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-sass": "*",
+    "grunt-contrib-watch": "*"
+  },
+  "dependencies": {
+    "auth0-js": "^6.7.6"
+  },
+  "license": "MIT"
+}
