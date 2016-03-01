@@ -3,11 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from redis import Redis
 
 app = Flask(__name__)
+app.secret_key = 'mysecret'
 
 # Set configurations
 app.config.from_object('settings')
-
-# Define database object
 db = SQLAlchemy(app)
 
 redis = Redis(host='redis', port=6379)

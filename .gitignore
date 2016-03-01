@@ -1,7 +1,7 @@
 # Front-end dep
-_build/node_modules
-_build/bower_components
-_build/.sass-cache
+node_modules
+bower_components
+.sass-cache
 
 # Python
 venv

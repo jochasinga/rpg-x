@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "bootstrap-social": "~4.10.1",
-    "bootstrap": "v4.0.0-alpha.2"
+    "bootstrap": "v4.0.0-alpha.2",
+    "tether": "^1.2.0"
   }
 }

@@ -1,4 +1,5 @@
-from app import app
+from app import app, db
+from app.models import User
 from app import redis
 
 import os
@@ -60,6 +61,13 @@ def callback_handling():
     # Save all user information into the session
     session['profile'] = user_info
 
+    """
+    # Add the user's profile to the database
+    this_user = User(session['profile']['nickname'], session['profile']['email'])
+    this_user.add()
+    this_user.commit()
+    """
+
     # Redirect to the user's page
     return redirect('/user')
 
@@ -80,7 +88,7 @@ def user():
     """User's logged in landing page"""
     #return render_template('user.html', user=session['profile'])
     redis.incr('hits')
-    return render_template('user.html', hits=redis.get('hits'))
+    return render_template('user.html', hits=redis.get('hits'), user=session['profile'])
 
 @app.route('/logout')
 def logout():
