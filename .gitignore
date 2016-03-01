@@ -6,6 +6,8 @@ bower_components
 # Python
 venv
 *.pyc
+.cache
+*.db
 
 # Mac OS
 *~

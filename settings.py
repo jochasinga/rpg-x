@@ -1,24 +1,28 @@
 import os
 
-DEBUG = True
-
-# App directory
+# Project directory
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
-# Define the database connection
-SQLALCHEMY_DATABASE_URI = 'sqlite:////' + os.path.join(BASE_DIR, 'app.db')
-#SQLALCHEMY_DATABASE_URI = 'sqlite:////tmp/app.db'
-DATABASE_OPTIONS = {}
-SQLALCHEMY_TRACK_MODIFICATIONS = False
+class Config:
+    """Base class for config environment"""
+    DEBUG = False
+    TESTING = False
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'app.db')
+    APP_NAME = 'RPG-X'
+    DATABASE_OPTIONS = {}
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    THREAD_PER_PAGE = 1
+    CSRF_ENABLED = True
+    CSRF_SESSION_KEY = "extremesecret0987"
+    SECRET_KEY = "supersecret01234"
 
-# Thread options
-THREAD_PER_PAGE = 1
+class ProductionConfig(Config):
+    DEBUG = False
 
-# Enable CSRF
-CSRF_ENABLED = True
+class DevelopmentConfig(Config):
+    DEBUG = True
 
-# Use a secret key for signing the data
-CSRF_SESSION_KEY = "secret"
-
-# Secret key for signing cookies
-SECRET_KEY = "secret"
+class TestingConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'app.db')
+    SQLALCHEMY_MIGRATE_REPO = os.path.join(BASE_DIR, 'db_repository')
+    TESTING = True

@@ -7,7 +7,9 @@ flask-wtf
 flask-cache
 flask-admin
 flask-security
+flask-testing
 requests
+ujson
 redis
 pytest
 mock
