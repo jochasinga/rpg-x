@@ -1,299 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>RPG-X: Play like you mean it!</title>
+  <title>RPG-X: Play like you mean it!</title>
 
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <!-- font-awesome -->
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">-->
-    <link rel="stylesheet" href="static/bower_components/font-awesome/css/font-awesome.css">
-    <!-- google fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700,800' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!-- font-awesome -->
+  <link rel="stylesheet" href="static/bower_components/font-awesome/css/font-awesome.css">
+  <!-- google fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700,800' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="static/_css/simple-sidebar.css">
-    <link rel="stylesheet" href="static/_css/sb-admin.css">
-    <!-- Morris Charts CSS -->
-    <!--
-    <link href="../static/_css/morris.css" rel="stylesheet">
-    -->
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="static/_css/simple-sidebar.css">
+  <link rel="stylesheet" href="static/_css/sb-admin.css">
+  <link rel="stylesheet" href="static/_css/animate.min.css">
+  <link rel="stylesheet" href="static/_css/_index.css">
 
-    <link rel="stylesheet" href="static/_css/animate.min.css">
-    <link rel="stylesheet" href="static/_css/_index.css">
+  <!-- Holderjs -->
+  <script src="static/bower_components/holderjs/holder.min.js"></script>
+  <script src="static/bower_components/tether/dist/js/tether.min.js"></script>
+  <style>
+    @media (min-width: 768px) {
+      #wrapper {
+        padding-left: 250px;
+      }
+      #nav-wrapper { padding-left: 0; }
+    }
 
-    <style>
-      body {
-        margin-top: 0;
-      }
-      .avatar {
-        width: 40px;
-        border-radius: 50%;
-        border-width: 2px;
-        border-color: rgba(255, 255, 255, 0.8);
-        border-style: solid;
-      }
-      .avatar-container { margin-right: 15px; }
-      #sidebar-wrapper { background: #31508F; }
-      #sidebar-wrapper a { color: white; }
-      .sidebar-brand a {
-        font-family: 'Quicksand';
-        font-size: 23px;
-      }
-      #page-content-wrapper {
-        padding-top: 0;
-        padding-right: 0;
-        padding-left: 0;
-      }
-      #wrapper { padding-left: 0; }
-      .navbar.navbar-default {
-        background: #f0ad4e;
-        height: 65px;
-        top: -65px;
-        opacity: 0;
-        transition: all .5s ease;
-      }
-      .navbar.show {
-        top: 0px;
-        opacity: 1;
-      }
-      .panel-wrapper {
-        padding-top: 35px;
-        padding-left: 20px;
-        padding-right: 20px;
-      }
-      @media (min-width: 768px) {
-        #wrapper {
-          padding-left: 250px;
-        }
-        #nav-wrapper { padding-left: 0; }
-      }
-      .fa {
-        color: white;
-        display: block;
-      }
-      #add-project {
-        padding-right: 30px;
-        font-size: 18px;
-      }
-
-    </style>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+    .fa {
+      color: white;
+      display: block;
+    }
+    
+    #add-project {
+      padding-right: 30px;
+      font-size: 18px;
+    }
+  </style>
 </head>
 
 <body>
     <div id="wrapper">
-        <!-- NAVBAR -->
-        <!--
-        <nav class="navbar navbar-default navbar-static-top templatemo-nav" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon icon-bar"></span>
-                <span class="icon icon-bar"></span>
-                <span class="icon icon-bar"></span>
-              </button>
-              <a href="/" class="navbar-brand">Collider</a>
-            </div>
-            <div class="collapse navbar-collapse">
-              <ul class="nav navbar-nav navbar-right text-uppercase">
-                <li><a href="#">Hi, {{ user['nickname'] }}</a></li>
-                <li><a href="#"><img class="avatar" src="{{ user['picture'] }}"/></a></li>
-                <li><form action="/logout">
-                      <button class="btn btn-default text-uppercase" type="submit">Log Out</button>
-                    </form>
-                </li>
-              </ul>
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand">
+            <a class="pull-left" href="#">
+              {{ user['nickname'] }}
+            </a>
+            <a class="pull-right avatar-container" href="#">
+              <img class="avatar" src="{{ user['picture'] }}"/>
+            </a>
+          </li>
+	  {% for i in range(5) %}
+            <li>
+	      <a href="#">Character&nbsp;{{i}}</a>
+	    </li>
+	  {% endfor %}
+          <li>
+	    <form action="/logout">
+              <button class="btn btn-default text-uppercase" type="submit">Log Out</button>
+            </form>
+          </li>
+        </ul>
+      </div>
+      <!--/#sidebar-wrapper-->
+
+      <!-- Page content -->
+      <div id="page-content-wrapper">
+	<!--NAVBAR-->
+        <div id="nav-wrapper">
+          <nav class="navbar navbar-default navbar-static-top templatemo-nav" role="navigation">
+            <ul class="nav navbar-nav navbar-left">
+              <li>
+                <a href="#menu-toggle" id="menu-toggle" class="pull-left">
+                  <i class="fa fa-bars fa-2x"></i>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="#" id="add-project" class="pull-right">
+                  <i class="fa fa-plus-circle fa-2x"></i>
+                </a>
+              </li>
+            </ul>
+	    <!-- This so the navbar pull with it -->
+
+          </nav>
+
+          <div class="container-fluid" style="position:absolute; top:50px; left:-10px;">
+            <div class="container panel-wrapper">
+              <!-- PANEL 1 -->
+              <div class="col-lg-5 col-md-5">
+                <div class="panel panel-primary">
+                  <div class="panel-body">
+                    <div class="row">
+                      <!--Character image-->
+                      <div class="character-img-wrapper col-xs-3">
+                        <img data-src="holder.js/60x60">
+                      </div>
+                      <div>
+                        <p style="margin-bottom:3px">Donald Trump</p>
+                      </div>
+                      <!--Progress container-->
+                      <div class="progress-container">
+                        <div class="progress" style="margin-bottom:7px; height:10px;">
+                          <div class="progress-bar progress-bar-success"
+                               role="progressbar" aria-valuenow="40"
+                               aria-valuemin="0" aria-valuemax="100"
+                               style="width: 40%">
+                            <span class="sr-only">40% Complete (success)</span>
+                          </div>
+                        </div>
+                        <div class="progress" style="margin-bottom:7px; height:10px;">
+                          <div class="progress-bar progress-bar-success"
+                               role="progressbar" aria-valuenow="60"
+                               aria-valuemin="0" aria-valuemax="100"
+                               style="width: 40%">
+                            <span class="sr-only">40% Complete (success)</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- GAP -->
+              <div class="col-lg-2 col-md-1"></div>
+
+              <!-- PANEL 2 -->
+              <div class="col-lg-5 col-md-5 pull-right">
+                <div class="panel panel-primary right">
+                  <div class="panel-body">
+                    <div class="row">
+                      <!--Character image-->
+                      <div class="character-imgwrapper col-xs-3 pull-right">
+                        <img data-src="holder.js/60x60">
+                      </div>
+                      <div>
+                        <p style="margin-bottom:3px">Donald Trump</p>
+                      </div>
+                      <!--Progress container-->
+                      <div class="progress-container">
+                        <div class="progress" style="margin-bottom:7px; height:10px;">
+                          <div class="progress-bar progress-bar-success"
+                               role="progressbar" aria-valuenow="40"
+                               aria-valuemin="0" aria-valuemax="100"
+                               style="width: 40%">
+                            <span class="sr-only">40% Complete (success)</span>
+                          </div>
+                        </div>
+                        <div class="progress" style="margin-bottom:7px; height:10px;">
+                          <div class="progress-bar progress-bar-success"
+                               role="progressbar" aria-valuenow="60"
+                               aria-valuemin="0" aria-valuemax="100"
+                               style="width: 40%">
+                            <span class="sr-only">40% Complete (success)</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
-        </nav>
-        -->
-
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                      <a class="pull-left" href="#">
-                          RPG-X
-                      </a>
-
-                      <a class="pull-right avatar-container" href="#">
-                        <img class="avatar" src="{{ user['picture'] }}"/>
-                      </a>
-                </li>
-                <li>
-                    <a href="#">Dashboard</a>
-                </li>
-                <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-                <li><form action="/logout">
-                      <button class="btn btn-default text-uppercase" type="submit">Log Out</button>
-                    </form>
-                </li>
-            </ul>
         </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div id="nav-wrapper">
-              <nav class="navbar navbar-default navbar-static-top templatemo-nav" role="navigation">
-                <ul class="nav navbar-nav navbar-left">
-                  <li>
-                    <a href="#menu-toggle" id="menu-toggle" class="pull-left">
-                      <i class="fa fa-bars fa-2x"></i>
-                    </a>
-                  </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li>
-                    <a href="#" id="add-project" class="pull-right">
-                      <i class="fa fa-plus-circle fa-2x"></i>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            <div class="container-fluid">
-
-                <!--
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1>Simple Sidebar</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                    </div>
-                </div>
-                -->
-
-                <!-- PANELS -->
-                <div class="row panel-wrapper">
-                  <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                      <div class="panel-heading">
-                        <div class="row">
-                          <div class="col-xs-3">
-                            <i class="fa fa-comments fa-5x"></i>
-                          </div>
-                          <div class="col-xs-9 text-right">
-                            <div class="huge">26</div>
-                            <div>New Comments!</div>
-                          </div>
-                        </div>
-                      </div>
-                      <a href="#">
-                        <div class="panel-footer">
-                          <span class="pull-left">View Details</span>
-                          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                          <div class="clearfix"></div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                      <div class="panel-heading">
-                        <div class="row">
-                          <div class="col-xs-3">
-                            <i class="fa fa-tasks fa-5x"></i>
-                          </div>
-                          <div class="col-xs-9 text-right">
-                            <div class="huge">12</div>
-                            <div>New Tasks!</div>
-                          </div>
-                        </div>
-                      </div>
-                      <a href="#">
-                        <div class="panel-footer">
-                          <span class="pull-left">View Details</span>
-                          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                          <div class="clearfix"></div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                      <div class="panel-heading">
-                        <div class="row">
-                          <div class="col-xs-3">
-                            <i class="fa fa-shopping-cart fa-5x"></i>
-                          </div>
-                          <div class="col-xs-9 text-right">
-                            <div class="huge">124</div>
-                            <div>New Orders!</div>
-                          </div>
-                        </div>
-                      </div>
-                      <a href="#">
-                        <div class="panel-footer">
-                          <span class="pull-left">View Details</span>
-                          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                          <div class="clearfix"></div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                      <div class="panel-heading">
-                        <div class="row">
-                          <div class="col-xs-3">
-                            <i class="fa fa-support fa-5x"></i>
-                          </div>
-                          <div class="col-xs-9 text-right">
-                            <div class="huge">13</div>
-                            <div>Support Tickets!</div>
-                          </div>
-                        </div>
-                      </div>
-                      <a href="#">
-                        <div class="panel-footer">
-                          <span class="pull-left">View Details</span>
-                          <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                          <div class="clearfix"></div>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <!-- /.row -->
-
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
+	<!--NAVBAR-->
+      </div>
+      <!-- /#page-content-wrapper -->
 
     </div>
     <!-- /#wrapper -->
@@ -301,28 +187,9 @@
     <!-- jQuery -->
     <script src="static/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3 -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-    <!-- Menu Toggle Script -->
-    <script>
-    $(function() {
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-        var timer;
-        $(window).on('mousemove', function() {
-            $('.navbar').addClass('show');
-            try {
-                clearTimeout(timer);
-            } catch (e) {}
-            timer = setTimeout(function() {
-                $('.navbar').removeClass('show');
-            }, 5000);
-        });
-    });
-    </script>
+    <script src="static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Basic menu animation -->
+    <script src="static/js/index.js"></script>
 
 </body>
-
 </html>

@@ -1,53 +1,79 @@
 @import 'main';
 
-/* GLOBAL */
-
-/* Links */
 a,
-a:focus,
-a:hover {
-  color: $white;
+a {
+		&:focus,
+		&:hover {
+				color: $white;
+		}
 }
 
 p a {
-  text-decoration: underline;
-}
-p a:hover {
-  opacity: 0.5;
+		text-decoration: underline;
+		&:hover {
+				opacity: 0.5;
+		}
 }
 
-/* Custom default button */
+// Custom default button
 .btn-secondary,
-.btn-secondary:hover,
-.btn-secondary:focus {
-  color: $soft-black;
-  text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: $white;
-  border: .05rem solid $white;
+.btn-secondary {
+		&:focus,
+		&:hover {
+				color: $soft-black;
+				// Prevent inheritence from `body`
+				text-shadow: none; 
+				background-color: $white;
+				border: .05rem solid $white;
+		}
 }
 
 
-/* Base structure */
+// Base structure
 html,
 body {
   height: 100%;
   /*background-color: #ffa705;*/
-  background-color: $golf-green;
-}
-body {
-  color: $white;
+	background-color: $golf-green;
+	background-image: url("../../static/img/id4-flag.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	color: $white;
   text-align: center;
   font-family: $main-font;
   font-weight: $light;
+	.site-wrapper {
+			height: 100%;
+			width: 100%;
+			background-color: rgba(0, 0, 0, 0.6);
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+			-webkit-box-shadow: inset 0px 0px 80px 50px rgba(0, 0, 0, 0.5);
+			-moz-box-shadow: inset 0px 0px 80px 50px rgba(0, 0, 0, 0.5);
+			-o-box-shadow: inset 0px 0px 80px 50px rgba(0, 0, 0, 0.5);
+			box-shadow: inset 0px 0px 80px 50px rgba(0, 0, 0, 0.5);
+			div {
+					// Prevent from inheriting .site-wrapper
+					opacity: none;
+			}
+	}
 }
 
-/* Extra markup and styles for table-esque vertical and horizontal centering */
+// Extra markup and styles for table-esque vertical and horizontal centering
 .site-wrapper {
   display: table;
   width: 100%;
-  height: 100%; /* For at least Firefox */
+  height: 100%;
   min-height: 100%;
 }
+
 .site-wrapper-inner {
   display: table-cell;
   vertical-align: top;
@@ -58,26 +84,22 @@ body {
   margin-left: auto;
 }
 
-/* Padding for spacing */
 .inner {
   padding: 2rem;
 }
 
-/* line-height */
 .signup {
   line-height: 3.5rem;
 }
 
-
-/* Header */
-
+// Header
 .masthead {
   margin-bottom: 2rem;
 }
 
 .masthead-brand {
   margin-bottom: 0;
-  font-family: $brand-font;
+  font-family: $header-font;
   font-weight: $semi-bold;
 }
 
@@ -102,6 +124,7 @@ body {
   .masthead-brand {
     float: left;
   }
+	
   .nav-masthead {
     float: right;
   }
@@ -111,11 +134,7 @@ body {
   }
 }
 
-
-/*
- * Cover
- */
-
+// Cover
 .cover {
   padding: 0 1.5rem;
 }
@@ -125,44 +144,40 @@ body {
 }
 
 
-/*
- * Footer
- */
-
+// Footer
 .mastfoot {
   color: $trans-white;
 }
 
-
-/*
- * Affix and center
- */
-
+// Affix and center
 @media (min-width: 40em) {
-  /* Pull out the header and footer */
-
+		
+  // Pull out the header and footer
   #login-container {
     margin-top: 120px;
   }
-
+	
   .masthead {
     position: fixed;
     top: 0;
   }
+	
   .mastfoot {
-    /*position: fixed;*/
+    // position: fixed
     position: relative;
     bottom: 0;
   }
-  /* Start the vertical centering */
+	
+  // Start the vertical centering
   .site-wrapper-inner {
     vertical-align: middle;
   }
-  /* Handle the widths */
+
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+	  // Must be percentage or pixels for horizontal alignment
+    width: 100%; 
   }
 }
 

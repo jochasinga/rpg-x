@@ -1,7 +1,4 @@
-/******* Global variables ********/
-/***** colors *****/
-/*$medium-black: #181b20;*/
-/*$summer-blue: #28a7e9;*/
+/* Global variables */
 @font-face {
   font-family: Montserrat;
   font-weight: light;
@@ -18,8 +15,5 @@
   font-family: Montserrat;
   font-weight: bolder;
   src: url("../fonts/Montserrat-Black.otf") format("opentype"); }
-/***** fonts *****/
-/**** font-weight *****/
-/*** font-size ***/
 
 /*# sourceMappingURL=_main.css.map */

@@ -1,18 +1,27 @@
-/******* Global variables ********/
+/* Global variables */
 
-/***** colors *****/
+// colors
 $white: white;
 $black: black;
-/*$medium-black: #181b20;*/
+$medium-black: #181b20;
 $medium-black: #1e2026;
 $soft-black: #333;
 $gray: #666;
 $very-light-gray: #f8f8f8;
 $golf-green: #769d44;
-/*$summer-blue: #28a7e9;*/
+$summer-blue: #28a7e9;
 $summer-blue: #339cb7;
 $deep-blue: #107db6;
+$flag-blue: #16214d;
 $trans-white: rgba(255, 255, 255, .5);
+
+// American flag theme
+$black-eye: #292c37;
+$red-state: #b11623;
+$redder-state: #9f111b;
+$black: #000;
+$all-cs: #cccccc;
+								
 
 @mixin font-face($family-name, $font-weight, $src) {
     @font-face {
@@ -27,17 +36,17 @@ $trans-white: rgba(255, 255, 255, .5);
 @include font-face(Montserrat, bold, "../fonts/Montserrat-Bold.otf");
 @include font-face(Montserrat, bolder, "../fonts/Montserrat-Black.otf");
 
-/***** fonts *****/
+// fonts
 $generic-font: 'Open Sans', sans-serif;
 $main-font: 'Roboto', sans-serif;
 $brand-font: 'Quicksand', sans-serif;
 $header-font: 'Montserrat', sans-serif;
 
-/**** font-weight *****/
+// font-weight
 $light: 300;
 $semi-bold: 600;
 $bold: bold;
 
-/*** font-size ***/
+// font-size
 $smallest: 13px;
 $standard: 1.2em;

@@ -17,7 +17,8 @@
     "tests"
   ],
   "devDependencies": {
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "holderjs": "^2.9.3"
   },
   "dependencies": {
     "bootstrap-social": "~4.10.1",
