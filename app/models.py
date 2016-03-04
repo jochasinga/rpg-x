@@ -2,6 +2,7 @@ import datetime
 from app import db
 
 class User(db.Model):
+    
     __tablename__ = 'user_auth'
 
     # User's credentials
@@ -30,6 +31,9 @@ class User(db.Model):
         return '<User %r>' % self.username
 
 class Stage(db.Model):
+
+    __tablename__ = 'stage'
+    
     id = db.Column(db.Integer, primary_key=True)
     stage_name = db.Column(db.String(120))
 
@@ -40,16 +44,32 @@ class Stage(db.Model):
         return '<Stage %r>' % self.stage_name
 
 class Question(db.Model):
+    
     __tablename__ = 'question'
+    
     id = db.Column(db.Integer, primary_key=True)
     stage_id = db.Column(db.Integer, db.ForeignKey('stage.id'))
-    stage = db.relationship('Stage',
-        backref=db.backref('questions', lazy='dynamic'))
+    stage = db.relationship('Stage', backref=db.backref('questions', lazy='dynamic'))
     body = db.Column(db.Text)
 
     def __init__(self, body, stage):
         self.body = body
         self.stage = stage
 
-    def repr__(self):
+    def __repr__(self):
         return '<Question %r>' % self.body
+
+class Candidate(db.Model):
+    
+    __tablename__ = 'candidate'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(120))
+
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return '<Candidate %r>' % self.name
+
+    
