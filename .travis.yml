@@ -1,0 +1,22 @@
+install: ./travis_install.sh
+
+branches:
+  only:
+    - master
+    - dev
+
+language: python
+python:
+  - "2.7"
+  - "2.6"
+install: "pip install -r requirements.txt"
+script:
+  - cd app/tests
+  - py.test app_tests.py
+
+
+
+
+
+
+
