@@ -5,11 +5,13 @@ import os
 
 from app import app as _app
 from app import db as _db
-from app.models import User, Question, Stage
+from app.models import User, Question, Stage, Candidate, Choice
 
 TEST_DB = 'test.db'
 TEST_DB_PATH = "../{}".format(TEST_DB)
 TEST_DATABASE_URI = 'sqlite:///' + TEST_DB_PATH
+
+_db.drop_all()
 
 @pytest.fixture(scope='session')
 def app(request):
@@ -24,6 +26,8 @@ def app(request):
 
     def teardown():
         ctx.pop()
+        if os.path.exists(TEST_DB_PATH):
+            os.remove(TEST_DB_PATH)
 
     request.addfinalizer(teardown)
     return _app
@@ -33,6 +37,7 @@ def db(app, request):
     """Session-wide test database"""
     if os.path.exists(TEST_DB_PATH):
         os.unlink(TEST_DB_PATH)
+        os.remove(TEST_DB_PATH)
 
     def teardown():
         _db.drop_all()
@@ -63,19 +68,21 @@ def session(db, request):
     return session
 
 def test_user_model(session):
-    user = User(username='joel34', email='joel@example.com')
+    user = User(username="joel34", email="joel@example.com")
 
     session.add(user)
     session.commit()
 
     assert user.id > 0
-    assert user.username == 'joel34'
-    assert user.email == 'joel@example.com'
+    assert user.username == "joel34"
+    assert user.email == "joel@example.com"
     assert len(User.query.all()) > 0
-    assert User.query.filter(User.username=='joel34') != None
+    assert User.query.filter(User.username=="joel34") != None
+    assert User.query.filter(User.email=="joel@example.com") != None
 
 def test_stage_model(session):
-    stage = Stage(stage_name='Capitol Hill')
+
+    stage = Stage(stage_name="Capitol Hill", background_url="static/img/capitol.png")
 
     q1 = Question(body="Howdy?", stage=stage)
     q2 = Question(body="What's ur name?", stage=stage)
@@ -88,13 +95,14 @@ def test_stage_model(session):
     session.commit()
 
     assert stage.id > 0
-    assert stage.stage_name == 'Capitol Hill'
+    assert stage.stage_name == "Capitol Hill"
+    assert stage.background_url == "static/img/capitol.png"
     assert len(Stage.query.all()) > 0
     assert len(stage.questions.all()) == 3
-    assert Stage.query.filter(Stage.stage_name=='Capitol Hill') != None
+    assert Stage.query.filter(Stage.stage_name=="Capitol Hill") != None
 
 def test_question_model(session):
-    stage = Stage(stage_name='Nevada')
+    stage = Stage(stage_name="Nevada", background_url="static/img/nevada.png")
     question = Question(body="How are you?", stage=stage)
 
     session.add(stage)
@@ -102,6 +110,37 @@ def test_question_model(session):
     session.commit()
 
     assert question.id > 0
+    assert question.stage.stage_name == 'Nevada'
     assert question.body == "How are you?"
     assert len(Question.query.all()) > 0
     assert Question.query.filter(Question.body=="How are you?") != None
+
+def test_choice_model(session):
+    stage = Stage(stage_name="New York", background_url="static/img/nyc.png")
+    question = Question(body="How is the weather today?", stage=stage)
+    
+    choice_1 = Choice(body="It's damn cold.", hp_point=0, xp_point=10, question=question)
+    choice_2 = Choice(body="I don't know.", hp_point=0, xp_point=-10, question=question)
+    choice_3 = Choice(body="Check Yahoo!", hp_point=10, xp_point=0, question=question)
+    choice_4 = Choice(body="It's 46 degree out!", hp_point=20, xp_point=30, question=question)
+
+    choices = [choice_1, choice_2, choice_3, choice_4]
+
+    session.add(stage)
+    session.add(question)
+    [session.add(choice) for choice in choices]
+
+    session.commit()
+
+    for choice in choices:
+        assert choice.id > 0
+        assert choice.question.body == "How is the weather today?"
+        assert len(choice.body) > 0
+        
+    assert len(Choice.query.all()) > 0
+    assert Choice.query.filter(Choice.body=="I don't know.") != None
+
+
+    
+
+    
