@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jochasinga/rpg-x.svg?branch=dev)](https://travis-ci.org/jochasinga/rpg-x)
+
 rpg-x
 =====
 
