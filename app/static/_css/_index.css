@@ -25,6 +25,13 @@ html {
     width: 100%;
     height: 100%;
     overflow-x: hidden; }
+    html body #footer {
+      position: fixed;
+      bottom: 0;
+      height: 200px;
+      background: white;
+      width: 100%;
+      padding-left: 250px; }
 
 .tm-white {
   padding-left: 100px;
@@ -153,10 +160,10 @@ img {
 .panel-wrapper {
   position: absolute;
   top: -65px;
-  left: -10px;
+  left: 10px;
   padding-top: 35px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 0;
+  padding-right: 0;
   transition: all .5s ease; }
 
 .panel-wrapper.down {
@@ -185,7 +192,7 @@ img {
   border-color: #9f111b; }
 
 .character-img-wrapper {
-  margin-right: 7px;
+  margin-right: -1px;
   padding-right: 0; }
   .character-img-wrapper.pull-right {
     margin-right: 0;

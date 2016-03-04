@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <!-- font-awesome -->
   <link rel="stylesheet" href="static/bower_components/font-awesome/css/font-awesome.css">
+  <!-- bootstrap3-dialog -->
+  <link rel="stylesheet" href="static/bower_components/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css">
   <!-- google fonts -->
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700,800' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
@@ -147,11 +149,13 @@
                       <div class="character-imgwrapper col-xs-3 pull-right">
                         <img data-src="holder.js/60x60">
                       </div>
-                      <div>
-                        <p style="margin-bottom:3px">Donald Trump</p>
+                      <div class="character-name-wrapper pull-right">
+                        <p style="margin-bottom:3px">
+			  Donald Trump
+			</p>
                       </div>
                       <!--Progress container-->
-                      <div class="progress-container">
+                      <div class="progress-container" style="margin-top:30px;">
                         <div class="progress" style="margin-bottom:7px; height:10px;">
                           <div class="progress-bar progress-bar-success"
                                role="progressbar" aria-valuenow="40"
@@ -184,12 +188,17 @@
     </div>
     <!-- /#wrapper -->
 
+    <div id="footer" class="container-fluid">
+      <div>
+	Hello
+      </div>
+    </div>
+
     <!-- jQuery -->
     <script src="static/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap 3 -->
     <script src="static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Basic menu animation -->
     <script src="static/js/index.js"></script>
-
 </body>
 </html>
