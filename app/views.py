@@ -13,6 +13,7 @@ from flask import request, jsonify, session, redirect
 from flask import render_template, send_from_directory
 from functools import wraps
 
+# TODO: This shouldn't be here.
 AUTH0_CLIENT_ID = "DjhO1VyfUgOozHXlBkwOxI07e31xwmeX"
 AUTH0_CLIENT_SECRET = "vglZfTY2xXOXGjH02DOtzXewzd2mAW_gU7Bf-ThWrOXFR4HLhSS7GFxrfvxKoKYO"
 #AUTH0_CALLBACK_URI = "http://192.168.99.100:5000/user"
@@ -65,15 +66,6 @@ def callback_handling():
     # Save all user information into the session
     session['profile'] = user_info
 
-    # Add the user's profile to the database
-    print("NICKNAME %s" % session['profile']['nickname'])
-    try:
-        this_user = User(session['profile']['nickname'], session['profile']['email'])
-        this_user.add()
-        this_user.commit()
-    except:
-        print(token_info['access_token'])
-
     # Redirect to the user's page
     return redirect('/user')
 
@@ -88,13 +80,25 @@ def requires_auth(f):
 
     return decorated
 
+def save_user_hook(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        if 'profile' in session:
+            username = session['profile']['nickname']
+            user_email = session['profile']['email']
+            user = User(username, user_email)
+            db.session.add(user)
+            db.session.commit()
+
+        return f(*args, **kwargs)
+
+    return decorated
+
 @app.route('/user')
 @requires_auth
+@save_user_hook
 def user():
     """User's logged in landing page"""
-    #return render_template('user.html', user=session['profile'])
-    #redis.incr('hits')
-    #return render_template('user.html', hits=redis.get('hits'), user=session['profile'])
     return render_template('user.html', user=session['profile'])
 
 @app.route('/logout')
