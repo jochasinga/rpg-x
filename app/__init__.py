@@ -1,6 +1,5 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-#from redis import Redis
 
 app = Flask(__name__)
 app.secret_key = 'mysecret'
@@ -8,9 +7,6 @@ app.secret_key = 'mysecret'
 # Set configurations
 app.config.from_object('settings.DevelopmentConfig')
 db = SQLAlchemy(app)
-db.create_all()
-
-#redis = Redis(host='redis', port=6379)
 
 import logging
 
