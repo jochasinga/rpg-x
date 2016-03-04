@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/jochasinga/rpg-x.svg?branch=dev)](https://travis-ci.org/jochasinga/rpg-x)
-
 rpg-x
 =====
+
+[![Build Status](https://travis-ci.org/jochasinga/rpg-x.svg?branch=dev)](https://travis-ci.org/jochasinga/rpg-x)
 
 Action-RPG Questionaire game with political candidates face-off.
 Basically, it's a arcade-style two-player game fighting one another
