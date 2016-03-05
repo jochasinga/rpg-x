@@ -24,13 +24,23 @@ def seed_data():
         "New York"       : "static/img/nyc.png",
         "Cupertino"      : "static/img/cuper.png"
     }
+    
+    """
+    candidates = {
+        "Donald Trump"    : "http://wapo.st/1nmMFBa",
+        "Hillary Clinton" : "http://bit.ly/1p6mH70",
+        "Ted Cruz"        : "http://bit.ly/1BvBqWY",
+        "Bernie Sanders"  : "http://bit.ly/1prbq0Q",
+        "Marco Rubio"     : "http://bit.ly/1QYXOWG"
+    }
+    """
 
     candidates = {
-        "Donald Trump"    : "static/img/trump.svg",
-        "Hillary Clinton" : "static/img/clinton.svg",
-        "Ted Cruz"        : "static/img/cruz.svg",
-        "Bernie Sanders"  : "static/img/bernie.svg",
-        "Barack Obama"    : "static/img/obama.svg"
+        "Donald Trump"    : "static/img/candidates/trump.jpg",
+        "Hillary Clinton" : "static/img/candidates/clinton.jpg",
+        "Ted Cruz"        : "static/img/candidates/cruz.jpg",
+        "Bernie Sanders"  : "static/img/candidates/sanders.jpg",
+        "Marco Rubio"     : "static/img/candidates/rubio.jpg"
     }
 
     questions = [
