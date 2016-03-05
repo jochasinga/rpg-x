@@ -19,6 +19,8 @@ AUTH0_CLIENT_SECRET = "vglZfTY2xXOXGjH02DOtzXewzd2mAW_gU7Bf-ThWrOXFR4HLhSS7GFxrf
 #AUTH0_CALLBACK_URI = "http://192.168.99.100:5000/user"
 AUTH0_CALLBACK_URI = "http://127.0.0.1:8000/user"
 
+log = logging.getLogger('general')
+
 @app.before_request
 def get_candidates():
     candidates = Candidate.query.all()
@@ -78,6 +80,7 @@ def requires_auth(f):
     """Decorator function for sign-in hook"""
     @wraps(f)
     def decorated(*args, **kwargs):
+        
         if 'profile' not in session:
             # Redirect to Login page
             return redirect('/')
@@ -86,9 +89,7 @@ def requires_auth(f):
     return decorated
 
 def save_user_hook(f):
-
     @wraps(f)
-    
     def decorated(*args, **kwargs):
         
         if 'profile' in session:
@@ -113,8 +114,8 @@ def save_user_hook(f):
 @save_user_hook
 def user():
     """User's logged in landing page"""
-    c_names = [candidate.name for candidate in request.candidates]
-    return render_template('user.html', user=session['profile'], candidate_names=c_names)
+    candidates = request.candidates
+    return render_template('user.html', user=session['profile'], candidates=candidates)
 
 @app.route('/logout')
 def logout():
