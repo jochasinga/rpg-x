@@ -1,5 +1,9 @@
 import datetime
-from app import db
+from app import app, db
+from wtforms import validators
+import flask_admin as admin
+from flask_admin.contrib import sqla
+from flask_admin.contrib.sqla import filters
 
 class User(db.Model):
     
@@ -73,7 +77,7 @@ class Choice(db.Model):
     question_id = db.Column(db.Integer, db.ForeignKey('question.id'))
     question = db.relationship('Question', backref=db.backref('choices', lazy='dynamic'))
 
-    def __init__(self, question, body, hp_point, xp_point):
+    def __init__(self, body, hp_point, xp_point, question):
         self.question = question
         self.body = body
         self.hp_point = hp_point
@@ -91,11 +95,58 @@ class Candidate(db.Model):
     # URI to candidate's avatar
     avatar_url = db.Column(db.String(240), unique=True)
 
-    def __init__(self, name, avatar):
+    def __init__(self, name, avatar_url):
         self.name = name
         self.avatar_url = avatar_url
 
     def __repr__(self):
         return '<Candidate %r>' % self.name
+
+# Admin
+
+"""
+class UserAdmin(sqla.ModelView):
+    inline_models = (User,)
+
+class StageAdmin(sqla.ModelView):
+    column_sortable_list = ('stage_name',)
+    column_labels = dict(stagename='Stage Name')
+    column_searchable_list = ('stage_name',)
+
+    # Pass arguments to WTForms
+    form_args = dict(
+                     text=dict(label='Big Text', validators=[validators.required()])
+        )
+
+    def __init__(self, session):
+        # Call parent class with predefined model.
+        super(StageAdmin, self).__init__(Stage, session)
+
+
+class CandidateAdmin(sqla.ModelView):
+    column_sortable_list = ('name')
+    column_labels = dict(name='Candidate')
+    column_searchable_list = ('name',)
+
+
+class QuestionView(sqla.ModelView):
+    form_excluded_columns = ['stage_id',]
+
+class ChoiceView(sqla.ModelView):
+    from_excluded_columns = ['question_id',]
+
+# Create admin
+admin = admin.Admin(app, name='Presidential-X', template_mode='bootstrap3')
+
+# Add views
+#admin.add_view(UserAdmin(User, db.session))
+#admin.add_view(StageAdmin(db.session))
+admin.add_view(QuestionView(Question, db.session))
+admin.add_view(ChoiceView(Choice, db.session))
+#admin.add_view(CandidateAdmin(Candidate, db.session))
+
+"""
+    
+    
 
     
