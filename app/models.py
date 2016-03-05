@@ -83,6 +83,9 @@ class Choice(db.Model):
         self.hp_point = hp_point
         self.xp_point = xp_point
 
+    def __str__(self):
+        return self.body
+
     def __repr__(self):
         return '<Choice %r>' % self.body
 
