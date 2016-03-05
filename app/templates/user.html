@@ -25,7 +25,6 @@
   <link rel="stylesheet" href="static/_css/sb-admin.css">
   <link rel="stylesheet" href="static/_css/animate.min.css">
   <link rel="stylesheet" href="static/_css/_index.css">
-
   <!-- Holderjs -->
   <script src="static/bower_components/holderjs/holder.min.js"></script>
   <script src="static/bower_components/tether/dist/js/tether.min.js"></script>
@@ -67,14 +66,9 @@
 	  </li>
 	  {% for candidate in candidates %}
 	    {% set tag_id = candidate.name.lower().replace(' ', '-') %}
-               <li id="{{ tag_id }}"
-	          onmouseleave="$(this).css('background-image', 'none')"
-	          onmouseover="$(this).css({
-			                     'background-image' : 'url({{ candidate.avatar_url }})'
-					     'background-size' : 'cover',
-					     'background-position' : 'center center',
-					     'background-repeat' : 'no-repeat'
-					    })">
+              <li id="{{ tag_id }}"
+	          onmouseover="$(this).css('background', 'url({{ candidate.avatar_url }})')"
+		  onmouseout="$(this).css('background', 'none')">
 	        <a href="#">{{ candidate.name }}</a>
        	      </li>
 	  {% endfor %}
@@ -216,12 +210,13 @@
 	Hello
       </div>
     </div>
-
+    
     <!-- jQuery -->
     <script src="static/bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap 3 -->
-    <script src="static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Basic menu animation -->
     <script src="static/js/index.js"></script>
+    <!-- Bootstrap 3 -->
+    <script src="static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
 </body>
 </html>
