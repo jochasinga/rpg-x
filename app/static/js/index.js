@@ -1,11 +1,13 @@
 $(function() {
+    // toggle sidebar
     $("#menu-toggle").click(function(e) {
         e.preventDefault()
         $("#wrapper").toggleClass("toggled")
     })
 
+    // navbar hidden-show
     var timer
-    $(window).on('mousemove', function() {
+    $('#nav-wrapper').on('mouseover', function() {
         $('.navbar').addClass('show')
         $('.panel-wrapper, .panel-primary').addClass('down')
         try {
@@ -14,6 +16,7 @@ $(function() {
         timer = setTimeout(function() {
             $('.navbar').removeClass('show')
             $('.panel-wrapper, .panel-primary').removeClass('down')
-        }, 3000)
+        }, 2000)
     })
 })
+
