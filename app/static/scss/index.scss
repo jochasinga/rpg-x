@@ -76,7 +76,10 @@ img {
 .sidebar-brand {
 		a {
 				font-family: 'Quicksand';
-				font-size: 23px;
+				font-size: 20px;
+		}
+		~ li {
+				text-transform: uppercase;
 		}
 }
 
