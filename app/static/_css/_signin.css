@@ -16,18 +16,15 @@
   font-weight: bolder;
   src: url("../fonts/Montserrat-Black.otf") format("opentype"); }
 body {
-  overflow: hidden;
-  /*
-  button.a0-primary {
-      background: $summer-blue !important;
-  }
-  */ }
+  overflow: hidden; }
   body #a0-onestep {
     min-width: 300px; }
     body #a0-onestep .a0-header .a0-icon-container {
       height: 35px !important; }
     body #a0-onestep .a0-header .a0-image img {
       display: none; }
+  body button.a0-primary {
+    background: #292c37 !important; }
 
 .form-signin {
   max-width: 330px;
