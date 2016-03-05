@@ -26,6 +26,9 @@ body {
   body button.a0-primary {
     background: #292c37 !important; }
 
+body .a0-icon-badge {
+  visibility: hidden !important; }
+
 .form-signin {
   max-width: 330px;
   padding: 15px;
