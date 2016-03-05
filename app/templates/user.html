@@ -62,12 +62,26 @@
               <img class="avatar" src="{{ user['picture'] }}"/>
             </a>
           </li>
-	  {% for name in candidate_names %}
-            <li>
-	      <a href="#">{{ name  }}</a>
-	    </li>
+	  <li>
+	    <hr id="top-break"class="sidebar-break">
+	  </li>
+	  {% for candidate in candidates %}
+	    {% set tag_id = candidate.name.lower().replace(' ', '-') %}
+               <li id="{{ tag_id }}"
+	          onmouseleave="$(this).css('background-image', 'none')"
+	          onmouseover="$(this).css({
+			                     'background-image' : 'url({{ candidate.avatar_url }})'
+					     'background-size' : 'cover',
+					     'background-position' : 'center center',
+					     'background-repeat' : 'no-repeat'
+					    })">
+	        <a href="#">{{ candidate.name }}</a>
+       	      </li>
 	  {% endfor %}
-          <li>
+	  <li>
+	    <hr id="bottom-break" class="sidebar-break">
+	  </li>
+          <li id="logout-button">
 	    <form action="/logout">
               <button class="btn btn-default text-uppercase" type="submit">Log Out</button>
             </form>

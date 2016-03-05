@@ -21,6 +21,38 @@ html {
 		}
 }
 
+/*
+li {
+		#donald-trump {
+				:hover {
+						background-repeat:  no-repeat;
+						background-position: center 30%;
+						background-attachment: fixed;
+						background-size: 130%;
+				}
+		}
+}
+*/
+
+#menu-toggle {
+		transform: translateY(5%);
+}
+
+#logout-button {
+		margin-top: 5px;
+}
+
+.sidebar-break {
+		border-style: ridge;
+		border-top: 1px solid #1c1e25;
+		border-bottom: 1px solid #3e4252;
+		margin-left: 15px;
+		margin-right: 15px;
+		&#top-break {
+				margin-top: 0;
+		}
+}
+
 .tm-white {
     padding-left: 100px;
     padding-right: 100px;
