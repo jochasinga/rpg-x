@@ -81,14 +81,23 @@ def requires_auth(f):
     return decorated
 
 def save_user_hook(f):
+
     @wraps(f)
+    
     def decorated(*args, **kwargs):
+        
         if 'profile' in session:
             username = session['profile']['nickname']
             user_email = session['profile']['email']
-            user = User(username, user_email)
-            db.session.add(user)
-            db.session.commit()
+            
+            if User.query.filter_by(username=username) is  None:
+                try:
+                    user = User(username, user_email)
+                    db.session.add(user)
+                    db.session.commit()
+                except:
+                    # TODO: redirect to 500 page
+                    pass
 
         return f(*args, **kwargs)
 
