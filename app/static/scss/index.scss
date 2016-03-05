@@ -241,6 +241,17 @@ img {
 		}
 }
 
+.logo-wrapper {
+		margin-left: 27%;
+}
+
+#center-logo > h2 {
+		color: $white;
+		font-family: $alfa-font;
+		margin-top: 1px;
+		letter-spacing: 0.05em;
+}
+
 // start navigation
 .navbar-default {
     // background: $white;

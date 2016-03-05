@@ -201,6 +201,15 @@ img {
     margin-left: 7px;
     padding-left: 0; }
 
+.logo-wrapper {
+  margin-left: 27%; }
+
+#center-logo > h2 {
+  color: white;
+  font-family: alfa-slab-one, sans-serif;
+  margin-top: 1px;
+  letter-spacing: 0.05em; }
+
 .navbar-default {
   border: none;
   box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.08);
