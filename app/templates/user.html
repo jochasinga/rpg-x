@@ -62,9 +62,9 @@
               <img class="avatar" src="{{ user['picture'] }}"/>
             </a>
           </li>
-	  {% for i in range(5) %}
+	  {% for name in candidate_names %}
             <li>
-	      <a href="#">Character&nbsp;{{i}}</a>
+	      <a href="#">{{ name  }}</a>
 	    </li>
 	  {% endfor %}
           <li>

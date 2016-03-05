@@ -1,7 +1,7 @@
 from __future__ import print_function
 
 from app import app, db
-from models import User
+from models import User, Candidate
 from flask_admin import Admin, BaseView, expose
 from flask_admin.contrib.sqla import ModelView
 import logging
@@ -19,6 +19,11 @@ AUTH0_CLIENT_SECRET = "vglZfTY2xXOXGjH02DOtzXewzd2mAW_gU7Bf-ThWrOXFR4HLhSS7GFxrf
 #AUTH0_CALLBACK_URI = "http://192.168.99.100:5000/user"
 AUTH0_CALLBACK_URI = "http://127.0.0.1:8000/user"
 
+@app.before_request
+def get_candidates():
+    candidates = Candidate.query.all()
+    request.candidates = candidates
+    
 def check_session(f):
     """Decorator function for sign-in hook"""
     @wraps(f)
@@ -108,7 +113,8 @@ def save_user_hook(f):
 @save_user_hook
 def user():
     """User's logged in landing page"""
-    return render_template('user.html', user=session['profile'])
+    c_names = [candidate.name for candidate in request.candidates]
+    return render_template('user.html', user=session['profile'], candidate_names=c_names)
 
 @app.route('/logout')
 def logout():
