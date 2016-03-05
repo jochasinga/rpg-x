@@ -28,7 +28,6 @@ p a {
 		}
 }
 
-
 // Base structure
 html,
 body {
@@ -99,8 +98,11 @@ body {
 
 .masthead-brand {
   margin-bottom: 0;
-  font-family: $header-font;
+  //font-family: $brand-font;
+	font-family: $alfa-font;
   font-weight: $semi-bold;
+	margin-top: 100px;
+	letter-spacing: 0.03em;
 }
 
 .nav-masthead .nav-link {
